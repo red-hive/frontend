@@ -22,6 +22,12 @@ Built with:
 - [Tailwindcss](https://tailwindcss.com/): Styling
 - [DaisyUI](https://daisyui.com/): Styling
 
+# Running locally
+
+```
+npm install
+npm run dev
+```
 
 # Contributing
 
@@ -30,7 +36,6 @@ Stocknear is an open-source project, soley maintained by Muslem Rahimi.
 We are not accepting pull requests. However, you are more than welcome to fork the project and customize it to suit your needs.
 
 The core idea of stocknear shall always be: **_Fast_**, **_Simple_** & **_Efficient_**.
-
 
 # Support ❤️
 

@@ -214,7 +214,7 @@
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
-                    {#each gainersList as item}
+                    {#each (gainersList ?? []) as item}
                       <Table.Row>
                         <Table.Cell class="text-sm sm:text-[1rem]">
                           <HoverStockChart symbol={item?.symbol} />
@@ -322,7 +322,7 @@
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
-                    {#each losersList as item}
+                    {#each (losersList ?? []) as item}
                       <Table.Row>
                         <Table.Cell class="text-sm sm:text-[1rem]">
                           <HoverStockChart symbol={item?.symbol} />
@@ -389,7 +389,7 @@
             <Card.Content>
               {#if recentWIIM?.length !== 0}
                 <ul style="padding-left: 5px;">
-                  {#each recentWIIM as item, index}
+                  {#each (recentWIIM ?? []) as item, index}
                     {#if index >= 3 && data?.user?.tier !== "Pro"}
                       <li
                         class="text-sm sm:text-[1rem]"
@@ -447,117 +447,6 @@
               {/if}
             </Card.Content>
           </Card.Root>
-
-          <!--
-          <Card.Root class="overflow-x-scroll overflow-hidden overflow-y-auto">
-            <Card.Header class="flex flex-row items-center">
-              <div class="flex flex-col items-start w-full">
-                <div class="flex flex-row w-full items-center">
-                  <Card.Title
-                    class="text-xl sm:text-2xl tex-white font-semibold"
-                    >Hottest Options Activity</Card.Title
-                  >
-                  <a
-                    href={optionsMode === "openInterest"
-                      ? "/list/highest-open-interest-change"
-                      : optionsMode === "ivRank"
-                        ? "/list/highest-option-iv-rank"
-                        : "/list/highest-option-premium"}
-                    class="ml-auto rounded-md text-xs sm:text-sm px-2 sm:px-3 py-2 font-semibold bg-[#fff] text-black"
-                  >
-                    View All
-                    <ArrowUpRight
-                      class="hidden sm:inline-block h-4 w-4 shrink-0 -mt-1 ml-0.5"
-                    />
-                  </a>
-                </div>
-                <Card.Description class="mt-2 text-sm sm:text-[1rem]"
-                  >Recent unusual options with the highest ...</Card.Description
-                >
-                <Tabs.Root value="openInterest" class="w-full sm:w-fit mt-5 ">
-                  <Tabs.List class="grid w-full grid-cols-3 bg-secondary">
-                    <Tabs.Trigger
-                      on:click={() => changeTable("openInterest")}
-                      value="openInterest"
-                      class="text-sm">OI Change</Tabs.Trigger
-                    >
-                    <Tabs.Trigger
-                      on:click={() => changeTable("premium")}
-                      value="premium"
-                      class="text-sm">Premium</Tabs.Trigger
-                    >
-                    <Tabs.Trigger
-                      on:click={() => changeTable("ivRank")}
-                      value="ivRank"
-                      class="text-sm">IV Rank</Tabs.Trigger
-                    >
-                  </Tabs.List>
-                </Tabs.Root>
-              </div>
-            </Card.Header>
-            <Card.Content>
-              <Table.Root class="overflow-x-scroll w-full">
-                <Table.Header>
-                  <Table.Row>
-                    <Table.Head class="text-white font-semibold"
-                      >Symbol</Table.Head
-                    >
-                    <Table.Head class="text-white text-right font-semibold"
-                      >Total OI</Table.Head
-                    >
-
-                    <Table.Head class="text-white text-right font-semibold"
-                      >Change OI</Table.Head
-                    >
-                    <Table.Head class="text-white text-right font-semibold"
-                      >Total Prem</Table.Head
-                    >
-                    <Table.Head class="text-white text-right font-semibold"
-                      >IV Rank</Table.Head
-                    >
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  {#each optionsTable as item}
-                    <Table.Row>
-                      <Table.Cell class="text-sm sm:text-[1rem]">
-                        <HoverStockChart symbol={item?.symbol} />
-                      </Table.Cell>
-                      <Table.Cell
-                        class="text-right xl:table.-column text-sm sm:text-[1rem] "
-                      >
-                        {abbreviateNumber(item?.totalOI)}
-                      </Table.Cell>
-                      <Table.Cell
-                        class="text-right xl:table.-column text-sm sm:text-[1rem]"
-                      >
-                        {#if item?.changeOI >= 0}
-                          <span class="text-[#00FC50]"
-                            >+{item?.changeOI?.toLocaleString("en-US")}</span
-                          >
-                        {:else if item?.changeOI < 0}
-                          <span class="text-[#FF2F1F]"
-                            >{item?.changeOI?.toLocaleString("en-US")}</span
-                          >
-                        {/if}
-                      </Table.Cell>
-                      <Table.Cell
-                        class="text-right md:table.-cell xl:table.-column text-sm sm:text-[1rem] text-white"
-                      >
-                        {abbreviateNumber(item?.totalPrem)}
-                      </Table.Cell>
-                      <Table.Cell
-                        class="text-right md:table.-cell xl:table.-column text-sm sm:text-[1rem] text-white"
-                      >
-                        {abbreviateNumber(item?.ivRank)}
-                      </Table.Cell>
-                    </Table.Row>
-                  {/each}
-                </Table.Body>
-              </Table.Root>
-            </Card.Content>
-          </Card.Root>
-          -->
 
           <Card.Root
             class="order-3 sm:order-1 overflow-x-scroll overflow-hidden overflow-y-auto no-scrollbar sm:max-h-[470px]"
@@ -686,7 +575,7 @@
             <Card.Content>
               {#if data?.getDashboard?.upcomingEarnings?.length !== 0}
                 <ul style="padding-left: 5px;">
-                  {#each data?.getDashboard?.upcomingEarnings as item, index}
+                  {#each (data?.getDashboard?.upcomingEarnings ?? []) as item, index}
                     {#if index >= 3 && data?.user?.tier !== "Pro"}
                       <li
                         class="text-sm sm:text-[1rem]"
@@ -812,7 +701,7 @@
             <Card.Content>
               {#if data?.getDashboard?.recentEarnings?.length !== 0}
                 <ul style="padding-left: 5px;">
-                  {#each data?.getDashboard?.recentEarnings as item}
+                  {#each (data?.getDashboard?.recentEarnings ?? []) as item}
                     <strong>{item?.name}</strong> (<HoverStockChart
                       symbol={item?.symbol}
                     />) has released its quarterly earnings at {formatTime(
