@@ -24,6 +24,15 @@ Built with:
 
 # Running locally
 
+You need two env variables to be set:
+
+```
+VITE_BACKEND_URL=http://localhost:8000
+VITE_STOCKNEAR_API_KEY=test
+```
+
+Then run the following commands:
+
 ```
 npm install
 npm run dev
