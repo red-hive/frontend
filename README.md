@@ -24,18 +24,28 @@ Built with:
 
 # Running locally
 
-You need two env variables to be set:
+Set the following env variables in docker-compose/.env:
 
 ```
-VITE_BACKEND_URL=http://localhost:8000
+# URL of the backend container
+VITE_BACKEND_URL=http://backend:8000
+
+# API key for the backend API
 VITE_STOCKNEAR_API_KEY=test
+
+# Network name for the backend container
+BACKEND_NETWORK=backend-network
+
+# Hostname and port for the frontend
+HOST=0.0.0.0
+PORT=5173
 ```
 
 Then run the following commands:
 
 ```
-npm install
-npm run dev
+make build-docker
+make compose
 ```
 
 # Contributing
