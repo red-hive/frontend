@@ -1,0 +1,19 @@
+services:
+  frontend:
+    image: stocknear-frontend:latest
+    build: ../
+    ports:
+      - "${PORT}:${PORT}"
+    networks:
+      - backend
+    environment:
+      - VITE_BACKEND_URL=${VITE_BACKEND_URL}
+      - VITE_STOCKNEAR_API_KEY=${VITE_STOCKNEAR_API_KEY}
+      - HOST=${HOST}
+      - PORT=${PORT}
+    entrypoint: [ "npm", "run", "dev" ]
+networks:
+  # The presence of these objects is sufficient to define them
+  backend:
+    external: true
+    name: ${BACKEND_NETWORK}

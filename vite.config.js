@@ -10,6 +10,8 @@ const config = {
 
   server: {
     cors: true,
+    host: process.env.HOST || "localhost",
+    port: process.env.PORT || 5173,
   },
 
   build: {
