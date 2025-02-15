@@ -203,15 +203,12 @@
             <div class="w-full m-auto mt-10">
               <Table
                 {data}
-                rawData={data?.user?.tier === "Pro"
-                  ? data?.getHedgeFundsData?.holdings
-                  : data?.getHedgeFundsData?.holdings?.slice(0, 5)}
+                rawData={data?.getHedgeFundsData?.holdings}
                 {excludedRules}
                 {defaultList}
                 {specificRows}
-                hideLastRow={true}
+                hideLastRow={false}
               />
-              <UpgradeToPro {data} />
             </div>
           </div>
         </main>
